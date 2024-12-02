@@ -1,6 +1,8 @@
 // Write your code here
 import {Link} from 'react-router-dom'
+import {loadStripe} from '@stripe/stripe-js'
 import CartContext from '../../context/CartContext'
+
 import './index.css'
 
 const CartSummary = () => (
@@ -18,6 +20,9 @@ const CartSummary = () => (
           behavior: 'smooth',
         })
       }
+      const makePayment = async () => {
+        const stripe = await loadStripe('')
+      }
       return (
         <div className="totalCart">
           <h1>
@@ -30,6 +35,7 @@ const CartSummary = () => (
               <button className="checkout-btn" onClick={scrollToTop}>
                 Checkout
               </button>
+              <button onClick={makePayment}>Buy Now</button>
             </Link>
           </div>
         </div>
